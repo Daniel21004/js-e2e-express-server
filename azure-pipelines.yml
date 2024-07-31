@@ -6,9 +6,11 @@
 trigger:
 - main
 
-pool:
-  vmImage: ubuntu-latest
-
+pool: 
+  name: 'Default'
+  demands:
+    - agent.name -equals DESKTOP-MV3RMI5
+    
 steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'

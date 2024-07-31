@@ -37,7 +37,7 @@ steps:
     rootFolderOrFile: '$(Build.SourcesDirectory)'
     includeRootFolder: false
     archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    archiveFile: "$(Build.ArtifactStagingDirectory)/app.zip"
     replaceExistingArchive: true
 - task: PublishBuildArtifacts@1
   inputs:
@@ -48,6 +48,7 @@ steps:
     azureSubscription: 'Azure for Students(3efca608-9871-495c-ac85-7be2286ab418)'
     appType: 'webAppLinux'
     appName: 'pipeline'
-    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
-    runtimeStack: 'NODE|18-lts'
+    # package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    package: "$(Build.ArtifactStagingDirectory)/app.zip"
+    # runtimeStack: 'NODE|18-lts'
     startUpCommand: 'npm start'
